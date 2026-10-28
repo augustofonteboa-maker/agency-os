@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="es" href="https://augustofonteboa-maker.github.io/agency-os/?lang=es">
 <link rel="alternate" hreflang="en" href="https://augustofonteboa-maker.github.io/agency-os/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://augustofonteboa-maker.github.io/agency-os/">
-<meta name="site-versao" content="3.2 · 2026-10-28">
+<meta name="site-versao" content="3.3 · 2026-10-28">
 <meta name="theme-color" content="#1F0C33">
 <meta name="application-name" content="Agency OS">
 <meta property="og:type" content="website">
@@ -800,6 +800,65 @@ dialog::backdrop{background:rgba(22,8,38,.7);backdrop-filter:blur(6px)}
 .buybar .btn .btn-ic{flex-basis:42px;height:42px}
 .buybar.show{transform:none}
 @media (max-width:760px){.buybar{display:block}.foot{padding-bottom:130px}body{font-size:17px}.kick{font-size:12px;letter-spacing:.12em}.btn{font-size:14px}.once{letter-spacing:.03em}.receipt .use{padding-right:92px}.stamp{width:92px;height:92px;right:10px;bottom:46px}}
+/* v3.3 · ícones de vidro (padrão da página Como Eu Faço Criativos: bloco de vidro roxo, reflexo no topo, halo na cor da área) */
+:root{--gl-hi:rgba(255,255,255,.42);--gl-a:#9B45F5;--gl-b:#6C20C4;--gl-c:#33105F;--gl-n1:#2B1250;--gl-n2:#12061F}
+.gi,.tile .ic,.step .ic,.vcard.us .vh .ic,.nocard .vi .ic,.gc .g-ic,.md .ic,.tool .ti,.marq-in span,.hero-icons span,.orbit-ic .obub,.node,.dot.lit,.dot.sel{
+  --gt:color-mix(in srgb,var(--c,#D9B3FF) 38%,var(--gl-a));
+  isolation:isolate;overflow:hidden;color:#fff;border:0;
+  background:radial-gradient(120% 85% at 28% -4%,var(--gl-hi),rgba(255,255,255,0) 54%),linear-gradient(150deg,var(--gt) 0%,var(--gl-b) 52%,var(--gl-c) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.62),inset 0 0 0 1px rgba(255,255,255,.16),inset 0 -8px 16px -8px rgba(18,6,31,.6),0 0 0 5px color-mix(in srgb,var(--c,#AF5EFF) 15%,transparent),0 14px 30px -12px color-mix(in srgb,var(--c,#AF5EFF) 70%,#12061F)}
+.gi::after,.tile .ic::after,.step .ic::after,.vcard.us .vh .ic::after,.nocard .vi .ic::after,.gc .g-ic::after,.md .ic::after,.tool .ti::after,.marq-in span::after,.hero-icons span::after,.orbit-ic .obub::after,.node::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
+  background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.42) 49%,transparent 62%) -170% 0/260% 100% no-repeat;animation:glShine 6s ease-in-out infinite}
+.tile:nth-child(3n+2) .ic::after,.marq-in span:nth-child(3n+2)::after,.hero-icons span:nth-child(2n)::after{animation-delay:-2s}
+.tile:nth-child(3n) .ic::after,.marq-in span:nth-child(3n)::after{animation-delay:-4s}
+@keyframes glShine{0%,62%{background-position:-170% 0}100%{background-position:170% 0}}
+/* o ícone: traço branco, preenchimento em dois tons na cor da área e brilho */
+.gi svg.i,.tile .ic svg.i,.step .ic svg.i,.vcard.us .ic svg.i,.nocard .ic svg.i,.gc .g-ic svg.i,.md .ic svg.i,.tool .ti svg.i,.marq-in svg.i,.hero-icons svg.i,.obub svg.i,.node svg.i,.dot svg.i{
+  --duo:color-mix(in srgb,color-mix(in srgb,var(--c,#D9B3FF) 62%,#fff) 40%,transparent);
+  position:relative;z-index:2;stroke-width:2;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--c,#D9B3FF) 75%,transparent)) drop-shadow(0 1px 1px rgba(18,6,31,.45))}
+svg.i .f{fill:var(--duo,rgba(217,179,255,.3))}
+svg.i .s{fill:currentColor}
+.draw > .f,.draw > .s{fill-opacity:0;transition:stroke-dashoffset 1s var(--ease),fill-opacity .6s .55s}
+.on .draw > .f,.on .draw > .s,.draw.on > .f,.draw.on > .s{fill-opacity:1}
+.tile .ic,.nocard .vi .ic,.gc .g-ic,.tool .ti{width:58px;height:58px;border-radius:17px}
+.tile .ic > svg,.nocard .vi .ic > svg,.gc .g-ic > svg,.tool .ti > svg{width:29px;height:29px}
+.tile.big .ic{width:68px;height:68px;border-radius:19px}
+.tile.big .ic > svg{width:33px;height:33px}
+/* hover: o card enche de roxo e o vidro escurece, para o ícone continuar saltando */
+.tile:hover .ic,.tile.big .ic,.tile.big:hover .ic,.nocard:hover .ic,.gc:hover .g-ic,.tool:hover .ti{color:#fff;--gl-a:var(--gl-n1);--gl-b:var(--gl-n1);--gl-c:var(--gl-n2);--gt:color-mix(in srgb,var(--c,#AF5EFF) 22%,var(--gl-n1))}
+.tile:not(.big):not(:hover) .ic{--gl-a:#9B45F5;--gl-b:#6C20C4;--gl-c:#33105F;--gt:color-mix(in srgb,var(--c,#D9B3FF) 38%,#9B45F5)}
+.tile.big:hover .ic{--gt:color-mix(in srgb,var(--c,#AF5EFF) 40%,#9B45F5);--gl-a:#9B45F5;--gl-b:#6C20C4;--gl-c:#33105F}
+/* linha de montagem: apagado → aceso → feito */
+.step.live .ic,.step.done .ic,.tile.big .ic,.tile.big:hover .ic,.nocard:hover .ic,.gc:hover .g-ic,.tool:hover .ti,.vcard.us .vh .ic,.stage.on .node:hover,.dot.sel{background:radial-gradient(120% 85% at 28% -4%,var(--gl-hi),rgba(255,255,255,0) 54%),linear-gradient(150deg,var(--gt) 0%,var(--gl-b) 52%,var(--gl-c) 100%)}
+
+.step .ic{--gl-a:var(--gl-n1);--gl-b:var(--gl-n1);--gl-c:var(--gl-n2);--gt:#3A1868;--gl-hi:rgba(255,255,255,.16);color:var(--lilac)}
+.step.live .ic,.step.done .ic{--gl-a:#9B45F5;--gl-b:#6C20C4;--gl-c:#33105F;--gt:#B26BFF;--gl-hi:rgba(255,255,255,.42);color:#fff}
+.step.live .ic{transform:scale(1.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.62),inset 0 0 0 1px rgba(255,255,255,.16),0 0 0 7px rgba(175,94,255,.22),0 0 40px -4px var(--violet)}
+/* comparação: os outros ficam em vidro neutro, o nosso em roxo */
+.vcard .vh .ic{background:linear-gradient(150deg,#fff,#E9DDF7);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(74,23,138,.1),0 8px 18px -10px rgba(74,23,138,.35)}
+/* órbitas e nós: vidro redondo */
+.orbit-ic .obub{width:56px;height:56px}
+.orbit-ic .obub > svg{width:26px;height:26px}
+.stage.on .node:hover{--gt:var(--c);--gl-a:var(--c);color:#fff}
+.dot.sel{--gt:#fff;--gl-a:#F3E8FF;--gl-b:#D9B3FF;--gl-c:#AF5EFF;color:var(--night);scale:1.12}
+.dot.sel svg.i{--duo:rgba(108,32,196,.25);filter:none}
+.hero-icons span{width:50px;height:50px;border-radius:15px}
+.hero-icons span > svg{width:24px;height:24px}
+.marq-in span{width:58px;height:58px;border-radius:17px}
+
+/* v3.3 · botão de compra com mais contraste: roxo vivo, letra branca, círculo branco com a seta, hover que enche de branco */
+.btn{color:#fff;text-shadow:0 1px 0 rgba(31,12,51,.35);box-shadow:0 18px 44px -14px rgba(155,69,245,.95),0 0 0 1px rgba(255,255,255,.06)}
+.btn::after{background:linear-gradient(110deg,transparent 42%,rgba(255,255,255,.38) 50%,transparent 58%) -220% 0/260% 100% no-repeat,radial-gradient(130% 160% at 22% -30%,rgba(255,255,255,.4),rgba(255,255,255,0) 52%),linear-gradient(100deg,#A853FF 0%,#8B35EE 46%,#6C20C4 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -10px 20px -10px rgba(31,12,51,.7);animation:btnShine 4.5s ease-in-out infinite}
+@keyframes btnShine{0%,55%{background-position:-220% 0,0 0,0 0}100%{background-position:220% 0,0 0,0 0}}
+.btn-fill{background:#fff;box-shadow:0 4px 12px -4px rgba(31,12,51,.5)}
+.btn-ic{color:var(--violet-d)}
+.btn:hover{color:var(--night);text-shadow:none}
+.md .acts .nx,.play-flow:hover{color:#fff;border-color:transparent;background:linear-gradient(100deg,#A853FF,#6C20C4);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 26px -10px rgba(155,69,245,.9)}
+.md .acts .nx:hover{background:#fff;color:var(--night)}
+.lang button[aria-pressed="true"]{color:#fff}
+.lang .ind{background:linear-gradient(100deg,#A853FF,#6C20C4);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6px 16px -6px rgba(155,69,245,.9)}
+.days i.on{background:linear-gradient(150deg,#A853FF,#6C20C4);color:#fff}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv,.js .wr .w>i{opacity:1;transform:none}.receipt{transform:none}.receipt tbody tr{opacity:1;transform:none}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -1408,6 +1467,12 @@ const I = {
   rev:'<circle pathLength="1" cx="12" cy="12" r="9"/><path pathLength="1" d="M8 12.5l3 3 5-6" class="puls"/>'
 };
 const ico = (k, live=true) => `<svg class="i draw${live ? ' live-ic' : ''}" viewBox="0 0 24 24">${I[k]}</svg>`;
+/* ícone em dois tons: forma fechada ganha preenchimento na cor da área, ponto pequeno vira sólido */
+const duo = (root = document) => root.querySelectorAll('svg.i > :not(.f):not(.s)').forEach(el => {
+  const t = el.tagName.toLowerCase(), r = +el.getAttribute('r');
+  if (t === 'circle' && r <= 3) el.classList.add('s');
+  else if (t === 'rect' || t === 'circle' || t === 'ellipse' || (t === 'path' && /z\s*$/i.test(el.getAttribute('d') || ''))) el.classList.add('f');
+});
 const AREAS = {'Estratégia':'#FAF5FF','Inteligência':'#D9B3FF','Copy':'#C88BFF','Criação':'#AF5EFF','Distribuição':'#8EA2FF','Tecnologia':'#6FE3B4','Qualidade':'#FFC2E8'};
 const P = [
  {k:'arq',n:'O Arquiteto',a:'Estratégia',s:'Estrategista',t:'Você diz o que quer. Ele monta o caminho.',d:'É com ele que você conversa no seu Claude. Ele lê o que a sua agência já sabe, faz no máximo três perguntas e te devolve um plano curto, com quem faz cada passo.',b:['Transforma "quero vender o meu curso" num plano com passos e nomes.','Chama o profissional certo para cada passo, com o pedido já explicado.','Para em você antes de cada passo seguir.'],o:'A decisão é sempre sua. Ele organiza o pedido; não dá aula de estratégia.',l:'Plano do funil aprovado. Agora o time inteiro sabe a ordem do trabalho.'},
@@ -1524,7 +1589,7 @@ bento.addEventListener('click', e => { const b = e.target.closest('.tile'); if (
 const dlg = $('#dlg'), body = $('#dlg-body'); let atual = 0;
 function abrir(i, from){
   atual = i; const p = P[i]; body.style.setProperty('--c', cor(p));
-  body.innerHTML = `<div class="top"><span class="ic">${ico(p.k)}</span><div><div class="who"><span>${p.n}</span> · <span>${p.a}</span></div><h3 class="h3" id="dlg-t">${p.t}</h3></div></div><p>${p.d}</p><ul>${p.b.map(x => `<li><svg><use href="#check"/></svg><span>${x}</span></li>`).join('')}</ul>${p.tags ? `<div class="tags">${p.tags.map((t, n) => `<span style="animation-delay:${n*.06}s">${t}</span>`).join('')}</div>` : ''}${p.o ? `<div class="note">${p.o}</div>` : ''}<div class="acts"><button type="button" data-close>Fechar</button><button type="button" class="nx" data-next>Ver o próximo →</button></div>`;
+  body.innerHTML = `<div class="top"><span class="ic">${ico(p.k)}</span><div><div class="who"><span>${p.n}</span> · <span>${p.a}</span></div><h3 class="h3" id="dlg-t">${p.t}</h3></div></div><p>${p.d}</p><ul>${p.b.map(x => `<li><svg><use href="#check"/></svg><span>${x}</span></li>`).join('')}</ul>${p.tags ? `<div class="tags">${p.tags.map((t, n) => `<span style="animation-delay:${n*.06}s">${t}</span>`).join('')}</div>` : ''}${p.o ? `<div class="note">${p.o}</div>` : ''}<div class="acts"><button type="button" data-close>Fechar</button><button type="button" class="nx" data-next>Ver o próximo →</button></div>`; duo(body);
   if (from) { const r = from.getBoundingClientRect(); dlg.style.setProperty('--mx', (r.left + r.width/2 - innerWidth/2) + 'px'); dlg.style.setProperty('--my', (r.top + r.height/2 - innerHeight/2) + 'px'); } else { dlg.style.setProperty('--mx', '0px'); dlg.style.setProperty('--my', '30px'); }
   translateDOM(body);
   if (!dlg.open) dlg.showModal();
@@ -1609,6 +1674,7 @@ $$('.sec, .ticker, .offer, .aulas, .foot').forEach(el => offIO.observe(el));
 const buybar = $('#buybar'), oferta = $('#oferta');
 function onScroll(){ tlScroll(); const passou = hero.getBoundingClientRect().bottom < 0, r = oferta.getBoundingClientRect(); buybar.classList.toggle('show', passou && !(r.top < innerHeight && r.bottom > 0)); }
 addEventListener('scroll', onScroll, {passive:true}); onScroll();
+duo();
 })();
 </script>
 </body>
