@@ -1,0 +1,30 @@
+# Agency OS
+
+> Uma única tecnologia que você coloca no seu Claude com um clique. Uma agência inteira nasce no seu computador: o Arquiteto e 14 especialistas, cada um com o que sabe fazer.
+
+## O que vem
+- A tecnologia Semente: um clique, e a agência inteira vai para o seu Claude.
+- O Arquiteto: o estrategista com quem você conversa. Ele entende o que você quer e passa para o profissional certo.
+- Os 14 especialistas, organizados por área: o Espião, o Oráculo, o Copywriter de oferta, o Copywriter de conteúdo, o Copywriter de conversa, o Branding, o Designer de artes, o Designer de página, o Editor, o Social Media, o Gestor de Tráfego, o Dev, o Mestre de Skills e o Revisor.
+- O banco da agência, já com o Editor: sons, trilhas, imagens 3D, transições, efeitos e filtros de cor.
+- O Super Cérebro: guarda tudo o que você aprova. A próxima peça já sai sabendo do que você gosta.
+- Aulas curtas: instalar, colocar no ar e usar.
+- Bônus: o Acervo de Ferramentas (ferramentas de código aberto e sem mensalidade).
+
+## Para usar
+Um computador, o plano do Claude e internet. A agência trabalha dentro do Claude, no plano assinado direto com a Anthropic.
+
+## Oferta
+12x de R$ 39,70 ou R$ 390,64 à vista. Um pagamento só, não é mensalidade. 7 dias de garantia. Compra pela Hubla.
+
+## Recibo
+Análise dos anúncios do concorrente R$ 0,20; roteiro do vídeo, dos anúncios e da página R$ 0,36; edição de 10 anúncios R$ 2,10; a página no ar R$ 0,64. Total R$ 3,30, 11% do uso da semana no plano Pro do Claude (medido pelo criador em 23/10/2026).
+
+## Perguntas frequentes
+- Qual a pegadinha? O plano do Claude, que você assina direto com a Anthropic. Cada peça usa um pedacinho do que o plano já inclui.
+- Funciona no meu computador? Você precisa de um computador, do plano do Claude e de internet.
+- Eu não sei instalar nada. É um clique; a aula 1 mostra o passo a passo.
+- São 15. Não vou me perder? Você conversa com o Arquiteto, e ele passa para o profissional certo.
+
+## Página
+- [Agency OS](https://augustofonteboa-maker.github.io/agency-os/)
