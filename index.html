@@ -7,7 +7,11 @@
 <meta name="description" content="Você instala uma única tecnologia no seu Claude. E uma agência inteira nasce no seu computador: o Arquiteto e 14 especialistas fazendo página, anúncio, vídeo e conteúdo por centavos.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://augustofonteboa-maker.github.io/agency-os/">
-<meta name="site-versao" content="3.1 · 2026-10-28">
+<link rel="alternate" hreflang="pt-BR" href="https://augustofonteboa-maker.github.io/agency-os/">
+<link rel="alternate" hreflang="es" href="https://augustofonteboa-maker.github.io/agency-os/?lang=es">
+<link rel="alternate" hreflang="en" href="https://augustofonteboa-maker.github.io/agency-os/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://augustofonteboa-maker.github.io/agency-os/">
+<meta name="site-versao" content="3.2 · 2026-10-28">
 <meta name="theme-color" content="#1F0C33">
 <meta name="application-name" content="Agency OS">
 <meta property="og:type" content="website">
@@ -235,6 +239,15 @@ svg.i{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke
   .phone{width:min(74vw,320px)}
   .orbit-ic{display:none}
 }
+
+/* seletor de idioma (topo, rola com a página) */
+.lang{position:absolute;top:18px;right:max(20px,calc((100% - var(--w)) / 2 + 20px));z-index:20;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:rgba(22,8,38,.55);border:1px solid rgba(217,179,255,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 30px -12px rgba(0,0,0,.6)}
+.lang > svg{width:16px;height:16px;color:var(--lilac);margin:0 6px 0 8px;flex:none;animation:rot 14s linear infinite}
+.lang .ind{position:absolute;top:4px;bottom:4px;left:0;width:0;border-radius:999px;background:var(--violet);box-shadow:0 0 16px -2px var(--violet);transition:transform .45s cubic-bezier(.2,1.2,.3,1),width .45s var(--ease);z-index:0}
+.lang button{position:relative;z-index:1;min-width:44px;min-height:36px;padding:0 10px;border-radius:999px;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.1em;color:var(--on-dark-2);transition:color .3s}
+.lang button:hover{color:var(--paper)}
+.lang button[aria-pressed="true"]{color:var(--night)}
+@media (max-width:900px){.hero{padding-top:78px}.lang{top:14px;right:50%;translate:50% 0}}
 
 /* ======================= 2 · FAIXA DO RECIBO ======================= */
 .ticker{background:var(--violet);color:var(--night);overflow:hidden;padding:14px 0;position:relative;z-index:2}
@@ -822,6 +835,7 @@ dialog::backdrop{background:rgba(22,8,38,.7);backdrop-filter:blur(6px)}
 
 <!-- ===================== 1 · TOPO ===================== -->
 <section class="sec dark hero" id="topo">
+  <nav class="lang" id="lang" aria-label="Idioma"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg><span class="ind" aria-hidden="true"></span><button type="button" data-l="pt" aria-pressed="true" lang="pt-BR" title="Português">PT</button><button type="button" data-l="es" aria-pressed="false" lang="es" title="Español">ES</button><button type="button" data-l="en" aria-pressed="false" lang="en" title="English">EN</button></nav>
   <div class="facets" aria-hidden="true">
     <svg class="f-base" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26103F"/><stop offset="1" stop-color="#140620"/></linearGradient></defs><g fill="url(#fg)" id="facetset">
       <polygon points="0,0 520,0 430,380 0,300"/><polygon points="520,0 980,0 900,260 430,380"/><polygon points="980,0 1440,0 1440,340 900,260"/><polygon points="0,300 430,380 360,900 0,900"/><polygon points="430,380 900,260 1060,640 620,900 360,900"/><polygon points="900,260 1440,340 1440,700 1060,640"/><polygon points="1060,640 1440,700 1440,900 620,900"/></g></svg>
@@ -1283,6 +1297,7 @@ dialog::backdrop{background:rgba(22,8,38,.7);backdrop-filter:blur(6px)}
 
 <div class="buybar" id="buybar"><a class="btn" data-buy href="#"><span class="btn-fill"></span><span class="btn-ic"><svg><use href="#arrow"/></svg></span>Quero a minha agência · 12x R$&nbsp;39,70</a></div>
 
+<script src="i18n.js"></script>
 <script>
 /* ===================== CFG ===================== */
 const CFG = {
@@ -1299,6 +1314,31 @@ const fino = matchMedia('(pointer:fine)').matches;
 const $ = (s, r=document) => r.querySelector(s), $$ = (s, r=document) => [...r.querySelectorAll(s)];
 const onEnter = (el, fn, th=.3) => { if (!el) return; const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ fn(e.target); io.unobserve(e.target); } }), {threshold:th}); io.observe(el); };
 const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+
+/* ===================== idiomas (PT · ES · EN) ===================== */
+const DICT = {es:{}, en:{}};
+(window.AOS_I18N || []).forEach(([pt, es, en]) => { DICT.es[pt] = es; DICT.en[pt] = en; });
+let LANG = 'pt';
+const ORIG = new WeakMap();
+const tr = t => LANG === 'pt' ? t : (DICT[LANG][t.trim()] ?? t);
+function trKeep(orig){ const m = orig.match(/^(\s*)([\s\S]*?)(\s*)$/); const k = m[2].replace(/\u00a0/g, ' '); if (!k || LANG === 'pt') return orig; const v = DICT[LANG][k] ?? DICT[LANG][m[2]]; return v == null ? orig : m[1] + v + m[3]; }
+function translateDOM(root){
+  const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode: n => n.parentElement && !n.parentElement.closest('script,style,.lang') ? 1 : 2});
+  let n; while ((n = tw.nextNode())) { if (!ORIG.has(n)) ORIG.set(n, n.nodeValue); const v = trKeep(ORIG.get(n)); if (n.nodeValue !== v) n.nodeValue = v; }
+  root.querySelectorAll && root.querySelectorAll('[aria-label],[alt]').forEach(el => ['aria-label','alt'].forEach(a => { if (!el.hasAttribute(a) || el.closest('.lang')) return; const k = a === 'alt' ? 'ptAlt' : 'ptAria'; if (el.dataset[k] == null) el.dataset[k] = el.getAttribute(a); el.setAttribute(a, trKeep(el.dataset[k])); }));
+}
+function setLang(l, save){
+  LANG = ['pt','es','en'].includes(l) ? l : 'pt';
+  const M = (window.AOS_META || {})[LANG]; if (M) { document.documentElement.lang = M.lang; document.title = M.title; const d = $('meta[name="description"]'); if (d) d.setAttribute('content', M.desc); }
+  $$('[data-words]').forEach(h => { h.innerHTML = h._src; translateDOM(h); splitWords(h); });
+  translateDOM(document.body);
+  $$('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === LANG));
+  moveInd();
+  if (save) { try { localStorage.setItem('aos_lang', LANG); } catch(e){} const u = new URL(location.href); if (LANG === 'pt') u.searchParams.delete('lang'); else u.searchParams.set('lang', LANG); history.replaceState(null, '', u); }
+}
+function moveInd(){ const b = $(`.lang button[aria-pressed="true"]`), ind = $('.lang .ind'); if (!b || !ind) return; ind.style.width = b.offsetWidth + 'px'; ind.style.transform = `translateX(${b.offsetLeft}px)`; }
+$('#lang').addEventListener('click', e => { const b = e.target.closest('button[data-l]'); if (b && b.dataset.l !== LANG) setLang(b.dataset.l, true); });
+addEventListener('resize', moveInd);
 
 /* checkout com UTM (30 dias) */
 const KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','src','sck'];
@@ -1330,13 +1370,14 @@ marks.forEach((s, k) => {
 function sizeMarks(){ marks.forEach(s => { const w = s.getBoundingClientRect().width || 600; s.style.setProperty('--sw', (1.5 * 232 / w).toFixed(3)); }); }
 sizeMarks(); addEventListener('resize', sizeMarks);
 
-/* títulos palavra por palavra */
-$$('[data-words]').forEach(h => {
+/* títulos palavra por palavra (guarda o original para trocar de idioma) */
+function splitWords(h){
   const walk = node => { [...node.childNodes].forEach(n => {
     if (n.nodeType === 3) { const frag = document.createDocumentFragment(); n.textContent.split(/(\s+)/).forEach(t => { if (!t) return; if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(' ')); return; } const w = document.createElement('span'); w.className = 'w'; const i = document.createElement('i'); i.textContent = t; w.appendChild(i); frag.appendChild(w); }); n.replaceWith(frag); }
     else if (n.nodeType === 1) walk(n); }); };
   walk(h); $$('.w > i', h).forEach((i, k) => i.style.transitionDelay = (k * 0.045) + 's');
-});
+}
+$$('[data-words]').forEach(h => { h._src = h.innerHTML; splitWords(h); });
 
 /* entradas */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
@@ -1448,7 +1489,7 @@ function rodarFluxo(){
   if (rodando) return; rodando = true;
   steps.forEach(s => { s.classList.remove('done','live'); $('.draw', s).classList.remove('on'); });
   fill.style.width = '0'; pct.textContent = '0%'; reply.classList.remove('on'); setWire(0);
-  digitar(PEDIDO, () => { reply.classList.add('on'); let i = 0;
+  digitar(tr(PEDIDO), () => { reply.classList.add('on'); let i = 0;
     (function prox(){ if (i > 0) { steps[i-1].classList.remove('live'); steps[i-1].classList.add('done'); }
       if (i >= steps.length) { rodando = false; confete(); return; }
       steps[i].classList.add('live'); $('.draw', steps[i]).classList.add('on');
@@ -1483,8 +1524,9 @@ bento.addEventListener('click', e => { const b = e.target.closest('.tile'); if (
 const dlg = $('#dlg'), body = $('#dlg-body'); let atual = 0;
 function abrir(i, from){
   atual = i; const p = P[i]; body.style.setProperty('--c', cor(p));
-  body.innerHTML = `<div class="top"><span class="ic">${ico(p.k)}</span><div><div class="who">${p.n} · ${p.a}</div><h3 class="h3" id="dlg-t">${p.t}</h3></div></div><p>${p.d}</p><ul>${p.b.map(x => `<li><svg><use href="#check"/></svg><span>${x}</span></li>`).join('')}</ul>${p.tags ? `<div class="tags">${p.tags.map((t, n) => `<span style="animation-delay:${n*.06}s">${t}</span>`).join('')}</div>` : ''}${p.o ? `<div class="note">${p.o}</div>` : ''}<div class="acts"><button type="button" data-close>Fechar</button><button type="button" class="nx" data-next>Ver o próximo →</button></div>`;
+  body.innerHTML = `<div class="top"><span class="ic">${ico(p.k)}</span><div><div class="who"><span>${p.n}</span> · <span>${p.a}</span></div><h3 class="h3" id="dlg-t">${p.t}</h3></div></div><p>${p.d}</p><ul>${p.b.map(x => `<li><svg><use href="#check"/></svg><span>${x}</span></li>`).join('')}</ul>${p.tags ? `<div class="tags">${p.tags.map((t, n) => `<span style="animation-delay:${n*.06}s">${t}</span>`).join('')}</div>` : ''}${p.o ? `<div class="note">${p.o}</div>` : ''}<div class="acts"><button type="button" data-close>Fechar</button><button type="button" class="nx" data-next>Ver o próximo →</button></div>`;
   if (from) { const r = from.getBoundingClientRect(); dlg.style.setProperty('--mx', (r.left + r.width/2 - innerWidth/2) + 'px'); dlg.style.setProperty('--my', (r.top + r.height/2 - innerHeight/2) + 'px'); } else { dlg.style.setProperty('--mx', '0px'); dlg.style.setProperty('--my', '30px'); }
+  translateDOM(body);
   if (!dlg.open) dlg.showModal();
   requestAnimationFrame(() => requestAnimationFrame(() => $$('.draw', body).forEach(s => s.classList.add('on'))));
 }
@@ -1499,7 +1541,7 @@ const dots = $$('.dot', orbit); let tmr = [];
 function aprender(i){
   tmr.forEach(clearTimeout); tmr = []; const p = P[i];
   dots.forEach(d => d.classList.remove('lit','sel','ping')); dots[i].classList.add('sel'); kb.forEach((k, j) => k.classList.toggle('on', j === 0));
-  learn.innerHTML = `<div class="who"><svg><use href="#check"/></svg>${p.n}</div><p>${p.l}</p>`; knows.textContent = 1;
+  learn.innerHTML = `<div class="who"><svg><use href="#check"/></svg>${p.n}</div><p>${p.l}</p>`; translateDOM(learn); knows.textContent = 1;
   mid.classList.remove('pulse'); pulses.classList.remove('burst'); void mid.offsetWidth; mid.classList.add('pulse'); pulses.classList.add('burst');
   /* cometa de luz percorre a órbita a partir de quem aprovou e acende os outros 14 */
   const T = reduz ? 0 : 1100;
@@ -1554,6 +1596,10 @@ if (fino && !reduz) {
   $$('.tilt, .tile, .gc, .tool').forEach(el => { el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(900px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-3px)`; }); el.addEventListener('pointerleave', () => el.style.transform = ''); });
   $$('.mag').forEach(b => { b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.translate = `${((e.clientX - r.left - r.width / 2) * .12).toFixed(1)}px ${((e.clientY - r.top - r.height / 2) * .25).toFixed(1)}px`; }); b.addEventListener('pointerleave', () => b.style.translate = ''); });
 }
+
+/* idioma inicial: ?lang= → escolha salva → idioma do navegador */
+(function(){ let l = new URLSearchParams(location.search).get('lang'); if (!l) { try { l = localStorage.getItem('aos_lang'); } catch(e){} } if (!l) { const n = (navigator.language || 'pt').toLowerCase(); l = n.startsWith('es') ? 'es' : n.startsWith('en') ? 'en' : 'pt'; } setLang(l, false); })();
+document.fonts && document.fonts.ready.then(moveInd);
 
 /* animações paradas quando a seção sai da tela */
 const offIO = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('off', !e.isIntersecting)), {rootMargin:'120px 0px'});
