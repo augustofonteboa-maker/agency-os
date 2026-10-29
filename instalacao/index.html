@@ -101,9 +101,49 @@ footer { color: var(--ink-3); font-size: 14px; border-top: 1px solid var(--line)
 @media (prefers-reduced-motion: no-preference) { a.btn, .copy { transition: transform .15s ease, filter .15s ease; } a.btn:hover { transform: translateY(-1px); filter: brightness(1.06); } }
 .logo-aos { display: block; width: 168px; height: auto; margin-bottom: 6px; }
 .brand .logo-aos { width: 40px; margin: 0; }
+
+/* ---- acabamento Agency OS ---- */
+html{background:#1F0C33}
+body{position:relative;overflow-x:clip;background:
+ radial-gradient(900px 620px at 88% -6%,rgba(175,94,255,.30),transparent 70%),
+ radial-gradient(760px 520px at -12% 38%,rgba(108,32,196,.24),transparent 70%),
+ radial-gradient(820px 560px at 110% 78%,rgba(175,94,255,.16),transparent 70%),#1F0C33}
+body:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+ background-image:linear-gradient(rgba(217,179,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(217,179,255,.05) 1px,transparent 1px);
+ background-size:56px 56px;mask-image:linear-gradient(180deg,#000,transparent 900px);-webkit-mask-image:linear-gradient(180deg,#000,transparent 900px)}
+body>*:not(.aosbg){position:relative;z-index:1}
+.aosbg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.aosmark{position:absolute;z-index:0;pointer-events:none;aspect-ratio:1;overflow:visible}
+.aosmark path{fill:none;stroke-width:var(--sw,.5)}
+.aosmark .base{stroke:#D9B3FF;opacity:.12}
+.aosmark .run{stroke:#C88BFF;stroke-width:calc(var(--sw,.5)*1.9);stroke-linecap:round;stroke-dasharray:80 920;filter:drop-shadow(0 0 3px #AF5EFF) drop-shadow(0 0 8px rgba(175,94,255,.7));animation:aosrun 9s linear infinite}
+.aosmark .run.w{stroke:#fff;stroke-width:calc(var(--sw,.5)*1.2);stroke-dasharray:24 976;filter:none}
+@keyframes aosrun{to{stroke-dashoffset:-1000}}
+@media (prefers-reduced-motion:reduce){.aosmark .run{animation:none}}
+.aoslogo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#FAF5FF}
+.aoslogo svg{width:34px;height:34px;filter:drop-shadow(0 0 12px rgba(175,94,255,.6))}
+.aoslogo b{font:700 22px/1 "Schibsted Grotesk",sans-serif;letter-spacing:-.02em}
+.aoslogo em{font:500 13px/1 "Geist Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#C8A6EE;font-style:normal;margin-left:4px}
+
+header{padding:30px 30px 26px;border:1px solid rgba(217,179,255,.16);border-radius:28px;background:linear-gradient(160deg,rgba(175,94,255,.16),rgba(31,12,51,.35) 60%);box-shadow:0 30px 80px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+section{padding:30px;border-radius:26px;background:rgba(42,17,69,.42);border:1px solid rgba(217,179,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.step,.kicker{display:flex;align-items:center;gap:10px}
+.step:before{content:"";width:7px;height:7px;border-radius:50%;background:#AF5EFF;box-shadow:0 0 10px 2px rgba(175,94,255,.75)}
+h2{background:linear-gradient(180deg,#FFFFFF,#E3CCFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{background:linear-gradient(160deg,rgba(58,24,96,.75),rgba(31,12,51,.75));transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-3px);border-color:rgba(175,94,255,.55);box-shadow:0 18px 40px -18px rgba(175,94,255,.55)}
+.code{box-shadow:0 22px 50px -24px rgba(0,0,0,.7),0 0 0 1px rgba(175,94,255,.10)}
+.code-head{background:linear-gradient(90deg,rgba(175,94,255,.16),transparent 70%)}
+nav a{background:rgba(31,12,51,.5)}
+nav a:hover,nav a:focus-visible{border-color:#AF5EFF;color:#FAF5FF;box-shadow:0 0 0 3px rgba(175,94,255,.18)}
+details{background:rgba(31,12,51,.6)}
+.note{border-left-color:#AF5EFF;background:linear-gradient(90deg,rgba(175,94,255,.10),transparent 70%);padding:10px 0 10px 16px;border-radius:0 12px 12px 0}
+ol.flow li::before{border-color:rgba(175,94,255,.45);background:rgba(175,94,255,.12);color:#D9B3FF}
+#p-suporte{font-size:11.5px;line-height:1.55;color:#D8C6F0}
+@media (max-width:640px){header,section{padding:20px 16px;border-radius:20px}#p-suporte{font-size:11px}}
 </style>
 </head>
-<body>
+<body><div class="aosbg" aria-hidden="true"><svg class="aosmark" data-aosmark style="right:-170px;top:-90px;width:min(620px,120vw)"></svg><svg class="aosmark" data-aosmark style="left:-260px;top:1500px;width:560px"></svg><svg class="aosmark" data-aosmark style="right:-230px;top:3100px;width:620px"></svg><svg class="aosmark" data-aosmark style="left:-200px;top:4700px;width:520px"></svg></div>
 
 
 <div class="wrap">
@@ -379,5 +419,13 @@ Depois de duas tentativas sem resolver, ou quando o problema for de compra, aces
 })();
 </script>
 
-</body>
+<script>
+(function(){var T=["M18 0H87A18 18 0 0 1 105 18V21A84 84 0 0 1 21 105H18A18 18 0 0 1 0 87V18A18 18 0 0 1 18 0Z","M133 0H202A18 18 0 0 1 220 18V87A18 18 0 0 1 202 105H199A84 84 0 0 1 115 21V18A18 18 0 0 1 133 0Z","M18 115H21A84 84 0 0 1 105 199V202A18 18 0 0 1 87 220H18A18 18 0 0 1 0 202V133A18 18 0 0 1 18 115Z","M199 115H202A18 18 0 0 1 220 133V202A18 18 0 0 1 202 220H133A18 18 0 0 1 115 202V199A84 84 0 0 1 199 115Z"],m=document.querySelectorAll('[data-aosmark]');
+m.forEach(function(s,k){s.setAttribute('viewBox','-8 -8 236 236');var h='';
+T.forEach(function(d){h+='<path class="base" d="'+d+'"/>'});
+T.forEach(function(d,i){h+='<path class="run" pathLength="1000" d="'+d+'" style="animation-delay:-'+(i*2.3+k*.9).toFixed(2)+'s"/>'});
+h+='<path class="run w" pathLength="1000" d="'+T[k%4]+'" style="animation-delay:-'+(k*1.7).toFixed(2)+'s;animation-duration:6s"/>';s.innerHTML=h});
+function sz(){m.forEach(function(s){var w=s.getBoundingClientRect().width||600;s.style.setProperty('--sw',(1.4*236/w).toFixed(3))})}
+sz();addEventListener('resize',sz)})();
+</script></body>
 </html>
