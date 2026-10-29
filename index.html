@@ -222,6 +222,9 @@ svg.i{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke
 .play::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:2px solid rgba(250,245,255,.5);animation:ping 2.2s var(--ease) infinite}
 @keyframes ping{from{transform:scale(.85);opacity:1}to{transform:scale(1.45);opacity:0}}
 .phone vturb-smartplayer{position:relative;z-index:2}
+#vsl video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--night-2);z-index:1;cursor:pointer}
+.phone .ph{z-index:3;cursor:pointer;background:radial-gradient(70% 50% at 50% 42%,rgba(175,94,255,.30),rgba(22,8,38,.35) 75%)}
+.som.off{opacity:0;transition:opacity .4s}
 .som{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;color:var(--lilac)}
 .som > svg{width:18px;height:18px}
 .som .eq{display:flex;gap:2px;align-items:flex-end;height:14px}
@@ -1362,7 +1365,9 @@ svg.i .s{fill:currentColor}
 const CFG = {
   checkout: "https://pay.hub.la/4ZNH2HLWugW1lHZDtJEm",   // Hubla (criador)
   vturbConta: "08a02eb3-4724-4a2a-9a0c-c3c7916ef0ea",    // ConverteAI
-  vturbPlayer: "6ae111d2f702237946d45f97",              // trocar pelo player da VSL nova do Augusto
+  vturbPlayer: "",                                      // player ConverteAI (vazio = usa o vídeo abaixo)
+  vslMp4: "assets/vsl.mp4",                             // VSL do Augusto (v2.2, 720p, faststart)
+  vslPoster: "assets/vsl-poster.jpg",
   pixelMeta: "",                                        // vazio = não dispara
   suporte: "suporte@agencymachine.com.br"
 };
@@ -1408,7 +1413,18 @@ $$('[data-mail]').forEach(a => { a.href = 'mailto:' + CFG.suporte; a.textContent
 $$('[data-mailtext]').forEach(s => s.textContent = CFG.suporte);
 
 /* VSL */
-if (CFG.vturbPlayer) {
+if (!CFG.vturbPlayer && CFG.vslMp4) {
+  const box = $('#vsl'), ph = $('.phone .ph'), som = $('.som');
+  const v = document.createElement('video');
+  Object.assign(v, {src: CFG.vslMp4, poster: CFG.vslPoster, preload: 'metadata', playsInline: true});
+  v.setAttribute('playsinline', ''); v.setAttribute('aria-label', 'VSL do Agency OS');
+  box.appendChild(v);
+  const toca = () => { v.controls = true; v.play(); ph && ph.remove(); };
+  if (ph) ph.addEventListener('click', toca);
+  v.addEventListener('click', () => { if (!v.controls) toca(); });
+  v.addEventListener('play', () => { ph && ph.remove(); som && som.classList.add('off'); });
+}
+else if (CFG.vturbPlayer) {
   const v = document.createElement('vturb-smartplayer'); v.id = 'vid-' + CFG.vturbPlayer; v.style.cssText = 'display:block;margin:0 auto;width:100%;'; $('#vsl').appendChild(v);
   const s = document.createElement('script'); s.async = true; s.src = `https://scripts.converteai.net/${CFG.vturbConta}/players/${CFG.vturbPlayer}/v4/player.js`; document.head.appendChild(s);
 }
