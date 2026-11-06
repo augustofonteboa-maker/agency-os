@@ -868,7 +868,7 @@ svg.i .s{fill:currentColor}
 .h1,.h2,.h3,h1,h2,h3,.pcard-in h3,.counter15 b,.receipt .tot b{font-family:"Bricolage Grotesque",var(--font);letter-spacing:-.035em}
 .h1{line-height:1.02}
 .btn{color:#1A120D;text-shadow:none}
-.btn:hover{color:#1A120D}
+.btn:hover{color:#F5EDE4}
 .btn-fill{background:#1A120D}
 .btn-ic{color:#FFD06A}
 .btn:hover .btn-ic{color:#FFD06A}
@@ -876,6 +876,17 @@ svg.i .s{fill:currentColor}
 .paper .hl .w>i,.lilac .hl .w>i{background:none;color:#C2320A;-webkit-text-fill-color:#C2320A}
 .hero .h1{font-size:clamp(28px,3.2vw,44px);line-height:1.06}
 .cta-mais{margin-top:clamp(36px,5vw,56px)}
+/* ícones mais chapados (menos 3D): sem reflexo, sem sombra interna, sem brilho passando */
+.gi,.tile .ic,.step .ic,.vcard.us .vh .ic,.nocard .vi .ic,.gc .g-ic,.md .ic,.tool .ti,.marq-in span,.hero-icons span,.orbit-ic .obub,.node,.dot.lit,.dot.sel,
+.step.live .ic,.step.done .ic,.tile.big .ic,.tile.big:hover .ic,.nocard:hover .ic,.gc:hover .g-ic,.tool:hover .ti,.stage.on .node:hover{
+  background:linear-gradient(160deg,var(--gt) 0%,var(--gl-b) 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.08),0 6px 16px -10px rgba(0,0,0,.55)}
+.step.live .ic{box-shadow:0 0 0 5px rgba(255,77,31,.18),0 6px 16px -10px rgba(0,0,0,.55)}
+.gi::after,.tile .ic::after,.step .ic::after,.vcard.us .vh .ic::after,.nocard .vi .ic::after,.gc .g-ic::after,.md .ic::after,.tool .ti::after,.marq-in span::after,.hero-icons span::after,.orbit-ic .obub::after,.node::after{display:none}
+.gi svg.i,.tile .ic svg.i,.step .ic svg.i,.vcard.us .ic svg.i,.nocard .ic svg.i,.gc .g-ic svg.i,.md .ic svg.i,.tool .ti svg.i,.marq-in svg.i,.hero-icons svg.i,.obub svg.i,.node svg.i,.dot svg.i{filter:none}
+.vcard .vh .ic{box-shadow:0 0 0 1px rgba(90,26,8,.12)}
+.hero-cta{margin-top:26px}
+@media (max-width:900px){.hero-cta{order:5;margin:6px 0 0}}
 .foot .word{font-family:"Bricolage Grotesque",var(--font);font-size:clamp(38px,10vw,140px)}
 .core .m.st{fill:none;stroke:url(#amg);stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
 .core .m.dot{fill:#FFD06A;filter:drop-shadow(0 0 10px rgba(255,77,31,.8))}
@@ -925,6 +936,7 @@ svg.i .s{fill:currentColor}
       <h1 class="h1 wr" data-words>Você instala uma única tecnologia no seu Claude. E uma <span class="hl">agência inteira</span> nasce no seu computador.</h1>
       <p class="lead rv">Sem dezenas de horas de aula, sem virar especialista em prompt e sem pagar por peça. Aperta o play e veja os 15 profissionais da sua agência trabalhando, do pedido à entrega.</p>
       <div class="hero-icons rv" id="heroIcons" aria-hidden="true"></div>
+      <p class="rv hero-cta"><a class="btn big mag" data-buy href="#oferta"><span class="btn-fill"></span><span class="btn-ic"><svg><use href="#arrow"/></svg></span>Quero a minha agência</a></p>
     </div>
     <div class="vsl-col">
       <div class="orbit-ic" id="orbitIc" aria-hidden="true"><div class="rg"></div></div>
