@@ -60,7 +60,7 @@ window.AOS_I18N = [
 ["O Designer de página","El Diseñador de páginas","The Page Designer"],
 ["Total","Total","Total"],
 ["11% do uso da semana · plano de R$ 120 por mês (R$ 30 por semana)","11% del uso de la semana · plan de R$ 120 al mes (R$ 30 por semana)","11% of the week's usage · R$ 120/month plan (R$ 30 per week)"],
-["Medido pelo criador no plano Pro do Claude em 23/10/2026. Print do medidor antes e depois ao lado.","Medido por el creador en el plan Pro de Claude el 23/10/2026. Captura del medidor antes y después al lado.","Measured by the creator on the Claude Pro plan on 10/23/2026. Usage meter screenshots before and after on the side."],
+["Medido no plano Pro do Claude em 23/10/2026. Print do medidor antes e depois ao lado.","Medido en el plan Pro de Claude el 23/10/2026. Captura del medidor antes y después al lado.","Measured on the Claude Pro plan on 10/23/2026. Usage meter screenshots before and after on the side."],
 ["AGENCY MACHINE · RECIBO · AGENCY MACHINE · RECIBO ·","AGENCY MACHINE · RECIBO · AGENCY MACHINE · RECIBO ·","AGENCY MACHINE · RECEIPT · AGENCY MACHINE · RECEIPT ·"],
 ["PAGO","PAGADO","PAID"],
 ["EM CENTAVOS","EN CENTAVOS","IN CENTS"],

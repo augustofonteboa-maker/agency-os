@@ -1081,7 +1081,7 @@ svg.i .s{fill:currentColor}
               </tbody>
             </table>
             <div class="tot"><span>Total</span><b>R$ <span id="total">0,00</span></b></div>
-            <div class="use">11% do uso da semana · plano de R$ 120 por mês (R$ 30 por semana)<br>Medido pelo criador no plano Pro do Claude em 23/10/2026. Print do medidor antes e depois ao lado.</div>
+            <div class="use">11% do uso da semana · plano de R$ 120 por mês (R$ 30 por semana)<br>Medido no plano Pro do Claude em 23/10/2026. Print do medidor antes e depois ao lado.</div>
             <div class="barcode" id="barcode" aria-hidden="true"></div>
             <div class="stamp" aria-hidden="true"><svg viewBox="0 0 120 120"><defs>
               <filter id="ink" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="3" seed="2" result="n2"/><feColorMatrix in="n2" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 2.25" result="m"/><feComposite in="d" in2="m" operator="in"/></filter>
@@ -1288,30 +1288,6 @@ svg.i .s{fill:currentColor}
         <p class="lead rv">Você tem 7 dias para pedir uma página, as artes, um vídeo. Se não for para você, pede o dinheiro de volta, sem pergunta.</p>
         <div class="days rv" id="days" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== 15 · QUEM É O CRIADOR ===================== -->
-<section class="sec dark" id="criador">
-  <svg class="bgmark" data-mark style="left:-6%;top:60%;width:min(600px,110vw)" aria-hidden="true"></svg>
-  <div class="wrap creator">
-    <div class="photo rv"><img src="assets/criador.webp" alt="O criador do Agency Machine" width="1000" height="1501" loading="lazy" decoding="async"><span class="tag"><svg><use href="#star"/></svg>O CRIADOR</span></div>
-    <div>
-      <div class="head">
-        <p class="kick rv"><svg><use href="#star"/></svg>Quem criou o Agency Machine</p>
-        <h2 class="h2 wr" data-words>Quem é <span class="hl">o criador</span></h2>
-      </div>
-      <div class="nums">
-        <div class="num rv"><div class="v"><span class="odo" data-odo="15"></span></div><div class="l">anos em vendas</div></div>
-        <div class="num rv"><div class="v"><small>R$</small><span class="odo" data-odo="21"></span><small>mi+</small></div><div class="l">pelo WhatsApp</div></div>
-      </div>
-      <ol class="tl" id="tl"><span class="bar" id="tlbar"></span>
-        <li><div class="when">15 anos</div><p>Trabalha com vendas há 15 anos, e as operações que ele montou venderam mais de R$ 21 milhões pelo WhatsApp em pouco mais de um ano.</p></li>
-        <li><div class="when">Antes</div><p>Sempre foi o cara da ideia. Quem colocava no ar era outro: o copywriter, o designer, o web designer. Cada um com a sua fila, o seu orçamento e o seu prazo. A ideia ficava parada esperando a peça mais lenta.</p></li>
-        <li><div class="when">Hoje</div><p>Hoje ele manda um áudio, e todo o funil nasce em minutos, gastando centavos. A página dele custou R$ 0,64. Ele fez isso para os próprios negócios. E percebeu que toda pessoa que quer vender na internet, abrir a sua loja online ou fazer a primeira venda, e aproveitar esse momento, precisa disso.</p></li>
-      </ol>
-      <div class="proof rv"><img src="assets/extrato-mini.jpg" alt="Extrato de vendas das operações do criador" width="300" height="399" loading="lazy" decoding="async"><div><b>R$ 21 mi+</b><span>Extrato das operações que o criador montou, vendidas pelo WhatsApp.</span></div></div>
     </div>
   </div>
 </section>
@@ -1679,8 +1655,8 @@ const mq = P.slice(1).map(p => `<span style="--c:${cor(p)}">${ico(p.k).replace('
 onEnter($('#seal'), t => t.classList.add('on'), .5);
 onEnter($('#days'), d => $$('i', d).forEach((x, i) => setTimeout(() => x.classList.add('on'), reduz ? 0 : 200 + i * 180)), .6);
 /* linha do tempo */
-const tl = $('#tl'), tlbar = $('#tlbar'), tlis = $$('li', tl);
-function tlScroll(){ const r = tl.getBoundingClientRect(), p = clamp((innerHeight * .65 - r.top) / r.height, 0, 1); tlbar.style.height = (p * (r.height - 16)) + 'px'; tlis.forEach(li => li.classList.toggle('lit', li.getBoundingClientRect().top < innerHeight * .65)); }
+const tl = $('#tl'), tlbar = $('#tlbar'), tlis = tl ? $$('li', tl) : [];
+function tlScroll(){ if (!tl) return; const r = tl.getBoundingClientRect(), p = clamp((innerHeight * .65 - r.top) / r.height, 0, 1); tlbar.style.height = (p * (r.height - 16)) + 'px'; tlis.forEach(li => li.classList.toggle('lit', li.getBoundingClientRect().top < innerHeight * .65)); }
 /* perguntas */
 $$('#faq .qa').forEach(q => $('button', q).addEventListener('click', () => { const open = !q.classList.contains('open'); $$('#faq .qa').forEach(o => { o.classList.remove('open'); $('button', o).setAttribute('aria-expanded', 'false'); }); if (open) { q.classList.add('open'); $('button', q).setAttribute('aria-expanded', 'true'); } }));
 $('#faq .qa').classList.add('open'); $('#faq .qa button').setAttribute('aria-expanded', 'true');
